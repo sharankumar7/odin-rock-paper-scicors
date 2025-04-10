@@ -12,7 +12,7 @@ function getHumanChoice() {
     alert("Enter valid option!");
   }
 }
-console.log(getHumanChoice());
+// console.log(getHumanChoice());
 
 function getComputerChoice() {
   let random_number = Math.trunc(Math.random() * 3);
@@ -25,3 +25,32 @@ function getComputerChoice() {
   }
 }
 // console.log(getComputerChoice());
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerchoice) {
+  humanChoice = humanChoice.toLowerCase();
+  computerchoice = computerchoice.toLowerCase();
+
+  if (humanChoice === computerchoice) {
+    alert("Its a tie!");
+  } else if (
+    (humanChoice === "rock" && computerchoice === "scissors") ||
+    (humanChoice === "paper" && computerchoice === "rock") ||
+    (humanChoice === "scissors" && computerchoice === "paper")
+  ) {
+    alert("You win this round! " + humanChoice + " beats " + computerchoice);
+    humanScore++;
+    console.log(humanScore);
+  } else {
+    alert("You lost! " + computerchoice + " beats" + humanChoice);
+    computerScore++;
+    console.log(computerScore);
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
